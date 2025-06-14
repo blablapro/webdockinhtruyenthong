@@ -115,4 +115,6 @@ details summary::marker {
   margin-top: 0;
   margin-bottom: 0;
   margin: 0 auto;
+  font-family: 'Crimson Text', serif; /* Sử dụng Crimson Text và fallback font serif */
+  font-size: 1.2em; /* Hoặc bất kỳ giá trị cỡ chữ nào bạn muốn */
 }
