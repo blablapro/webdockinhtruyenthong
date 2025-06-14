@@ -1,0 +1,118 @@
+body {
+  font-family: "Crimson Pro","Noto Serif", serif;
+  background-color: #fdf6e3; /* Giữ lại màu kem */
+  margin: 40px;
+  color: #000;
+}
+a {
+    font-style: italic;
+    color: #A52A2A; 
+    text-decoration: none;
+    transition: color 0.3s ease; 
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+a:last-child {
+    margin-bottom: 0;
+}
+
+a:hover {
+    color: #CD5C5C; 
+}
+#dinhvaocanhtren {
+  position: -webkit-sticky; /* Cho trình duyệt Safari cũ */
+  position: sticky;
+  top: 0; /* Dính vào cạnh trên của khung nhìn */
+  background-color: #fdf6e3;
+  padding-top: 5px;       /* Tùy chọn: thêm chút đệm cho đẹp */
+  padding-bottom: 5px;
+  z-index: 100; /* Đảm bảo nó nổi lên trên các phần tử khác */
+  /* Các style của class .thut như margin-left vẫn sẽ được áp dụng nếu có */
+}
+
+/* Tiêu đề trang */
+.main-title {
+  font-size: 2.5em;
+  font-style: italic;
+  color: #A52A2A;
+  text-align: center;
+  margin-bottom: 20px; /* Giảm từ 40px */
+}
+
+/* Tiêu đề mỗi kinh */
+.prayer-title {
+  font-size: 1.6em;
+  font-style: italic;
+  color: #A52A2A;
+  text-align: center;
+  margin-top: 20px;   
+  cursor: pointer; /* Add cursor pointer */
+  margin-bottom: 5px; 
+}
+
+/* Đoạn nội dung kinh */
+p {
+  font-size: 1.6em;
+  line-height: 1.5;
+  text-align: justify;
+  max-width: 700px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin: 0 auto; /* Giảm spacing và canh giữa */
+}
+
+/* Dropcap: chữ cái đầu đỏ, chiếm 2 dòng */
+.dropcap {
+  float: left;
+  font-size: 3.6em;
+  line-height: 0.75;
+  margin-right: 8px;
+  color: #A52A2A;
+  font-weight: 500;
+  height: 0.8em;
+}
+.kem {
+    color: #fdf6e3;
+}
+.do {
+    color: #A52A2A;
+}
+.nghieng {
+    font-style: italic;
+}
+.thut {
+  text-indent: 2em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+details summary {
+    display: block; /* Đảm bảo summary chiếm toàn bộ chiều rộng */
+  font-size: 1.6em;
+  font-style: italic;
+  color: #A52A2A;
+  text-align: center;
+  cursor: pointer; /* Add cursor pointer */
+}
+details summary::marker {
+    display: none; /* Ẩn mũi tên mặc định của details */
+}
+.chant-container {
+  width: 100%;
+  text-align: justify;
+  max-width: 700px;
+  /*
+  padding: 1rem;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  box-sizing: border-box;*/
+  margin-bottom: 2rem; /* Thêm khoảng cách dưới mỗi bài thánh ca */
+  font-size: 1.6em;
+  line-height: 1.5;
+  text-align: justify;
+  max-width: 700px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin: 0 auto;
+}
