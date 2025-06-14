@@ -81,6 +81,11 @@ p {
 .nghieng {
     font-style: italic;
 }
+.dam {
+  font-style: bold;
+  font-size: 1.6em;
+}
+.giua {text-align: center;}
 .thut {
   text-indent: 2em;
   margin-top: 0;
