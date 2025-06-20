@@ -106,6 +106,9 @@ napKinhVao('Kinh Cầu nhân đức sạch sẽ Hà Nội xưa', 'old-hanoi-pray
 napKinhVao('Kinh Cầu Đức Bà và các Thánh Hà Nội xưa', 'old-hanoi-prayers/Kinh Cầu Đức Bà và các Thánh.html');
 napKinhVao('Kinh Cám ơn Hà Nội xưa', 'old-hanoi-prayers/Kinh Cám ơn.html');
 napKinhVao('Lời nguyện khi đọc kinh đoạn Hà Nội xưa', 'old-hanoi-prayers/Lời nguyện khi đọc kinh đoạn.html');
+napKinhVao('Kinh Cầu ông thánh Phêrô', 'private-prayers/Kinh Cầu ông thánh Phêrô.html');
+napKinhVao('Kinh tuần cửu nhật ông thánh Phêrô', 'private-prayers/Kinh tuần cửu nhật ông thánh Phêrô.html');
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Hàm layoutChant đã được sửa đổi để nhận chiều rộng làm tham số
