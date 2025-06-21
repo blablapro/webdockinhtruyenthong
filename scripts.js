@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ctxt.dropCapTextSize = 87;
         ctxt.annotationTextSize = 20;
         ctxt.staffLineColor = "#A52A2A";
-        ctxt.dropCapTextColor = "rgba(165, 42, 42, 0.8)";
+        ctxt.dropCapTextColor = "#A52A2A";
         ctxt.dropCapTextFont = "'Crimson Pro','Adobe Garamond Pro','Garamond','Georgia', serif";
         ctxt.annotationTextFont = ctxt.lyricTextFont;
         var mappings = exsurge.Gabc.createMappingsFromSource(ctxt, gabc);
@@ -147,8 +147,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Hàm mới để điều chỉnh chiều rộng và hiển thị thánh ca
     function adjustChantContainerWidth() {
-        const allChantContainers = document.querySelectorAll('.chant-container');
+        const allChantContainers = document.querySelectorAll('.chant-container, .multi-chant-container');
         const screenWidth = window.innerWidth;
+
         let containerWidth;
 
         if (screenWidth <= 780) {
@@ -161,81 +162,87 @@ document.addEventListener('DOMContentLoaded', function() {
             containerWidth = 700;
         }
 
-        allChantContainers.forEach(container => {
-            container.style.width = containerWidth + 'px';
+        allChantContainers.forEach(chantContainer => {
+            chantContainer.style.width = containerWidth + 'px';
 
-            // Hiển thị lại thánh ca với chiều rộng mới
-            const gabcData = container.dataset.gabc;
-            const annotationData = container.dataset.annotation;
-            if (gabcData) {
-                let ctxt = new exsurge.ChantContext();
-                const useDropCap = container.dataset.dropcap !== 'false';
-                displayChant(ctxt, null, gabcData, container, useDropCap, annotationData, containerWidth); // Truyền containerWidth vào displayChant
+            // Clear previous chant rendering
+            if (chantContainer.classList.contains('chant-container')) {
+ chantContainer.innerHTML = '';
+            } else if (chantContainer.classList.contains('multi-chant-container')) {
+                const gabcSegments = chantContainer.querySelectorAll('.gabc-segment');
+                gabcSegments.forEach(segment => segment.innerHTML = '');
+            }
+
+            if (chantContainer.classList.contains('chant-container')) {
+                // Hiển thị lại thánh ca đơn với chiều rộng mới
+                const gabcData = chantContainer.dataset.gabc;
+                const annotationData = chantContainer.dataset.annotation;
+                if (gabcData) {
+                    let ctxt = new exsurge.ChantContext();
+                    const useDropCap = chantContainer.dataset.dropcap !== 'false';
+                    displayChant(ctxt, null, gabcData, chantContainer, useDropCap, annotationData, containerWidth); // Truyền containerWidth vào displayChant
+                }
+            } else if (chantContainer.classList.contains('multi-chant-container')) {
+                // Hiển thị lại từng đoạn thánh ca trong multi-chant-container với chiều rộng mới
+                const chantSegments = chantContainer.querySelectorAll('.gabc-segment');
+                // Sử dụng chantContainer làm ngữ cảnh cho querySelectorAll
+ chantSegments.forEach(segment => {
+                    if (segment.classList.contains('gabc-segment')) {
+                        const gabcData = segment.dataset.gabc;
+                        const annotationData = segment.dataset.annotation;
+                        if (gabcData) {
+                            let ctxt = new exsurge.ChantContext();
+                            const useDropCap = segment.dataset.dropcap !== 'false';
+                            displayChant(ctxt, null, gabcData, segment, useDropCap, annotationData, containerWidth);
+                        }
+                    }
+                });
             }
         });
     }
 
-    // Find all div elements with the class 'toggleable-prayer' or 'toggleable-prayer-open'
-    const prayerDivs = document.querySelectorAll('div.toggleable-prayer, div.toggleable-prayer-open');
+    // Handle toggleable divs (prayers and chants)
+    // Consolidated the two querySelectorAll calls into one
+    const toggleableDivs = document.querySelectorAll('div.toggleable-prayer, div.toggleable-prayer-open, .chant-container, .multi-chant-container');
 
-    prayerDivs.forEach(prayerDiv => {
-        const prayerId = prayerDiv.id;
+    let chantCounter = 1;
+
+    toggleableDivs.forEach(div => {
+        const isChantContainer = div.classList.contains('chant-container') || div.classList.contains('multi-chant-container');
+        const titleData = div.dataset.title;
+        const divId = div.id;
 
         // Create an h2 element
         const toggleButton = document.createElement('h2');
-        toggleButton.textContent = prayerId.replace(/\d+/g, '').replace(" Hà Nội xưa", ''); // Remove all digits
         toggleButton.classList.add('prayer-title');
         toggleButton.style.cursor = 'pointer';
 
+        if (isChantContainer) {
+            if (titleData) {
+                toggleButton.textContent = `${chantCounter}. ${titleData}`;
+                toggleButton.style.color = '#A52A2A'; // Set color for chant titles
+                chantCounter++;
+            }
+        } else {
+            toggleButton.textContent = divId.replace(/\d+/g, '').replace(" Hà Nội xưa", ''); // Remove all digits
+        }
+
         // Insert the h2 before the div
-        prayerDiv.parentNode.insertBefore(toggleButton, prayerDiv);
+        div.parentNode.insertBefore(toggleButton, div);
 
         // Initially set the display style based on the class
-        if (prayerDiv.classList.contains('toggleable-prayer')) {
-            prayerDiv.style.display = 'none';
-        }
+        div.style.display = 'none';
 
         toggleButton.addEventListener('click', function() {
             // Toggle the display style of the corresponding div
-            if (prayerDiv.style.display === 'none') {
-                prayerDiv.style.display = 'block';
+            if (div.style.display === 'none') {
+                div.style.display = 'block';
             } else {
-                prayerDiv.style.display = 'none';
+                div.style.display = 'none';
             }
         });
     });
 
-    // Handle chant-container divs
-    const chantContainers = document.querySelectorAll('.chant-container');
-
-    // Initially hide all chant containers
-    let chantCounter = 1; // Initialize counter
-    chantContainers.forEach(chantContainer => {
-        chantContainer.style.display = 'none';
-    });
-
-    chantContainers.forEach(chantContainer => {
-        const titleData = chantContainer.dataset.title;
-
-        if (titleData) {
-            const chantTitle = document.createElement('h2');
-            chantTitle.textContent = `${chantCounter}. ${titleData}`; // Prepend counter
-            chantTitle.classList.add('prayer-title');
-            chantTitle.style.color = '#A52A2A'; // Set color to #A52A2A
-            chantContainer.parentNode.insertBefore(chantTitle, chantContainer);
-            chantTitle.style.cursor = 'pointer';
-
-            chantTitle.addEventListener('click', function() {
-                // Toggle the display style of the corresponding div
-                if (chantContainer.style.display === 'none') {
-                    chantContainer.style.display = 'block';
-                } else {
-                    chantContainer.style.display = 'none';
-                }
-            });
-        }
-        chantCounter++; // Increment counter
-    });
 
     // ----------------------------------------------------------------------
     // PHẦN LOGIC CHÍNH - ĐÃ ĐƯỢC CẢI TIẾN
@@ -248,6 +255,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gọi hàm điều chỉnh chiều rộng khi cửa sổ được resize
     window.addEventListener('resize', adjustChantContainerWidth);
-
-    // --- (Bạn có thể sao chép lại 2 hàm layoutChant và displayChant đã sửa đổi ở trên) ---
 });

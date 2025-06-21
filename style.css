@@ -123,3 +123,15 @@ details summary::marker {
   font-family: 'Crimson Text', serif; /* Sử dụng Crimson Text và fallback font serif */
   font-size: 1.2em; /* Hoặc bất kỳ giá trị cỡ chữ nào bạn muốn */
 }
+.multi-chant-container {
+  width: 100%;
+  text-align: justify;
+  max-width: 700px;
+  margin-bottom: 2rem; /* Thêm khoảng cách dưới mỗi bài thánh ca */
+  line-height: 1.5;
+  text-align: justify;
+  max-width: 700px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin: 0 auto;
+}

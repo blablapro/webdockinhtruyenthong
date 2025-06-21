@@ -2260,14 +2260,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.lyricTextSize = 16; // in points?
 	    this.lyricTextFont = "'Palatino Linotype', 'Book Antiqua', Palatino, serif";
 	    this.lyricTextColor = "#000";
-
 	    this.dropCapTextSize = 64;
 	    this.dropCapTextFont = this.lyricTextFont;
-	    this.dropCapTextColor = this.lyricTextColor;
-
+	    this.dropCapTextColor = "#a52a2a";
 	    this.annotationTextSize = 13;
 	    this.annotationTextFont = this.lyricTextFont;
-	    this.annotationTextColor = this.lyricTextColor;
+	    this.annotationTextColor = "#a52a2a";
 
 	    // everything depends on the scale of the punctum
 	    this.glyphPunctumWidth = _Exsurge2.Glyphs.PunctumQuadratum.bounds.width;
@@ -2946,7 +2944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      properties = 'font-style:italic;';
 	      break;
 	    case redMarkup:
-	      properties = 'fill:#e22613;'; // SVG text color is set by the fill property
+	      properties = 'fill:#a52a2a;'; // SVG text color is set by the fill property
 	      break;
 	    case smallCapsMarkup:
 	      properties = "font-variant:small-caps;font-feature-settings:'smcp';-webkit-font-feature-settings:'smcp';";
@@ -3035,9 +3033,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // non-matching symbols first
 	        if (markupSymbol === "A/." || markupSymbol === "R/." || markupSymbol === "V/." || markupSymbol === "a/." || markupSymbol === "r/." || markupSymbol === "v/.") {
-	          closeSpan(text[match.index] + ".", "font-family:'Exsurge Characters';fill:#e22613;");
+	          closeSpan(text[match.index] + ".", "font-family:'Exsurge Characters';fill:#a52a2a;");
 	        } else if (markupStack.length === 0) {
-	          // otherwise we're dealing with matching markup delimeters
+	          //#e22613 otherwise we're dealing with matching markup delimeters
 	          // if this is our first markup frame, then just create an inline for preceding text and push the stack frame
 	          closeSpan(text.substring(spanStartIndex, match.index));
 	          markupStack.push(MarkupStackFrame.createStackFrame(markupSymbol, match.index));
@@ -3362,7 +3360,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function getExtraStyleProperties(ctxt) {
 	      var props = _get(Object.getPrototypeOf(Lyric.prototype), 'getExtraStyleProperties', this).call(this);
 
-	      if (this.lyricType === LyricType.Directive && ctxt.autoColor === true) props += "fill:#e22613;";
+	      if (this.lyricType === LyricType.Directive && ctxt.autoColor === true) props += "fill:#a52a2a;";
 
 	      return props;
 	    }
