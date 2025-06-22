@@ -256,3 +256,74 @@ document.addEventListener('DOMContentLoaded', function() {
     // Gọi hàm điều chỉnh chiều rộng khi cửa sổ được resize
     window.addEventListener('resize', adjustChantContainerWidth);
 });
+// Đoạn mã cho phép chạy nhạc
+document.addEventListener('DOMContentLoaded', function() {
+    const clickableElements = document.querySelectorAll('.gabc-segment, p[data-audio]');
+    const audioCache = {}; // Đối tượng để lưu trữ các đối tượng Audio đã tạo
+    let currentAudio = null; // Biến để theo dõi audio đang phát
+
+    clickableElements.forEach(element => {
+        element.addEventListener('click', function(event) {
+            event.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+
+            const audioPath = this.getAttribute('data-audio');
+
+            if (audioPath) {
+                let audio;
+                if (audioCache[audioPath]) {
+                    audio = audioCache[audioPath];
+                } else {
+                    audio = new Audio(audioPath);
+                    audioCache[audioPath] = audio;
+
+                    audio.addEventListener('ended', function() {
+                        this.currentTime = 0;
+                        // Khi audio kết thúc, đặt currentAudio về null nếu đây là audio đang phát
+                        if (currentAudio === this) {
+                            currentAudio = null;
+                        }
+                    });
+
+                    audio.addEventListener('play', function() {
+                        // Khi audio bắt đầu phát, cập nhật currentAudio
+                        currentAudio = this;
+                    });
+
+                     audio.addEventListener('pause', function() {
+                        // Khi audio dừng, đặt currentAudio về null nếu đây là audio đang phát
+                        if (currentAudio === this) {
+                            currentAudio = null;
+                        }
+                    });
+                }
+
+                if (currentAudio && currentAudio !== audio) {
+                    // Nếu có audio khác đang phát, dừng nó lại
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+
+                if (audio.paused) {
+                    audio.play(); // Nếu audio của segment này đang dừng, phát nó
+                } else {
+                     // Nếu audio của segment này đang phát (tức là currentAudio === audio),
+                     // click lần nữa sẽ dừng nó.
+                    audio.pause();
+                    audio.currentTime = 0;
+                     // Cập nhật currentAudio sau khi dừng
+                     currentAudio = null;
+                }
+            }
+        });
+    });
+
+    // Lắng nghe sự kiện click trên toàn bộ document để dừng audio khi click ra ngoài
+    document.addEventListener('click', function() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null; // Đặt currentAudio về null sau khi dừng
+        }
+    });
+});
+
