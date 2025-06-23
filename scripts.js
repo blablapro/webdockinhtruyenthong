@@ -1,117 +1,5 @@
-async function napKinhVao(containerId, filePath) {
-    const container = document.getElementById(containerId);
-    if (!container) {
-      console.warn(`Không tìm thấy vùng chứa với ID: ${containerId}`);
-      return; // Thoát sớm nếu không tìm thấy container
-    }
 
-    try {
-      const response = await fetch(filePath);
-      if (!response.ok) {
-        throw new Error(`Lỗi khi tải file ${filePath}: ${response.statusText} (${response.status})`);
-      }
-      const htmlContent = await response.text();
-      container.innerHTML = htmlContent;
-    } catch (error) {
-      console.error(`Không thể nạp kinh từ \"${filePath}\" vào \"#${containerId}\":`, error);
-      // Hiển thị thông báo lỗi thân thiện hơn trong container
-      container.innerHTML = `<p style=\"color: red; font-style: italic;\">Xin lỗi, không thể tải được nội dung kinh này vào lúc này.</p>`;
-    }
-  }
-  napKinhVao('Các câu lạy', 'prayers/Các câu lạy.html');
-  napKinhVao('Câu than Fatima', 'prayers/Câu than Fatima.html');
-  napKinhVao('Kinh Ăn năn tội', 'prayers/Kinh Ăn năn tội.html');
-  napKinhVao('Kinh Cám ơn ban ngày', 'prayers/Kinh Cám ơn ban ngày.html');
-  napKinhVao('Kinh Cám ơn ban tối', 'prayers/Kinh Cám ơn ban tối.html');
-  napKinhVao('Kinh Cáo mình', 'prayers/Kinh Cáo mình.html');
-  napKinhVao('Kinh Cậy vì', 'prayers/Kinh Cậy vì.html');
-  napKinhVao('Kinh Cậy', 'prayers/Kinh Cậy.html');
-  napKinhVao('Kinh Dấu đơn', 'prayers/Kinh Dấu đơn.html');
-  napKinhVao('Kinh Dấu kép', 'prayers/Kinh Dấu kép.html');
-  napKinhVao('Kinh Vì dấu', 'prayers/Kinh Vì dấu.html');
-  napKinhVao('Kinh Kính mến', 'prayers/Kinh Kính mến.html');
-  napKinhVao('Kinh Kính mừng', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 1', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 2', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 3', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 4', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 5', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 6', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 7', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 8', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Kính mừng 9', 'prayers/Kinh Kính mừng.html');
-  napKinhVao('Kinh Lạy Cha', 'prayers/Kinh Lạy Cha.html');
-  napKinhVao('Kinh Lạy Nữ Vương', 'prayers/Kinh Lạy Nữ Vương.html');
-  napKinhVao('Kinh Phó dâng', 'prayers/Kinh Phó dâng.html');
-  napKinhVao('Kinh Phù hộ', 'prayers/Kinh Phù hộ.html');
-  napKinhVao('Kinh Sáng danh', 'prayers/Kinh Sáng danh.html');
-  napKinhVao('Kinh Tin kính', 'prayers/Kinh Tin kính.html');
-  napKinhVao('Kinh Tin', 'prayers/Kinh Tin.html');
-  napKinhVao('Kinh Trông cậy', 'prayers/Kinh Trông cậy.html');
-
-  napKinhVao('Kinh Vì dấu', 'prayers/Kinh Vì dấu.html');
-  napKinhVao('Kinh Truyền tin', 'prayers/Kinh Truyền tin.html');
-  napKinhVao('Kinh Lạy Nữ Vương Thiên Đàng', 'prayers/Kinh Lạy Nữ Vương Thiên Đàng.html');
-  napKinhVao('Kinh Đức Chúa Thánh Thần', 'prayers/Kinh Đức Chúa Thánh Thần.html');
-  napKinhVao('Kinh Sấp mình', 'prayers/Kinh Sấp mình.html');
-  napKinhVao('Kinh Thờ lạy', 'prayers/Kinh Thờ lạy.html');
-  napKinhVao('Kinh Đội ơn', 'prayers/Kinh Đội ơn.html');
-  napKinhVao('Kinh Sáng soi', 'prayers/Kinh Sáng soi.html');
-  napKinhVao('Kinh Đức thánh Thiên thần', 'prayers/Kinh Đức thánh Thiên thần.html');
-  napKinhVao('Kinh Lạy Thánh Mẫu', 'prayers/Kinh Lạy Thánh Mẫu.html');
-  napKinhVao('Kinh Ông thánh Phanxicô cầu cho kẻ ngoại', 'prayers/Kinh Ông thánh Phanxicô cầu cho kẻ ngoại.html');
-  napKinhVao('Kinh Xét mình', 'prayers/Kinh Xét mình.html');
-  napKinhVao('Kinh Hãy nhớ', 'prayers/Kinh Hãy nhớ.html');
-  napKinhVao('Kinh Cầu ơn chết lành', 'prayers/Kinh Cầu ơn chết lành.html');
-  napKinhVao('Kinh Nghĩa đức tin', 'prayers/Kinh Nghĩa đức tin.html');
-  napKinhVao('Kinh Mười điều răn', 'prayers/Kinh Mười điều răn.html');
-  napKinhVao('Kinh Sáu điều răn', 'prayers/Kinh Sáu điều răn.html');
-  napKinhVao('Kinh Bảy phép Bí tích', 'prayers/Kinh Bảy phép Bí tích.html');
-  napKinhVao('Kinh Mười bốn mối', 'prayers/Kinh Mười bốn mối.html');
-  napKinhVao('Kinh Cải tội bảy mối', 'prayers/Kinh Cải tội bảy mối.html');
-  napKinhVao('Kinh Tám mối phúc thật', 'prayers/Kinh Tám mối phúc thật.html');
-  napKinhVao('Kinh Cầu Tên rất thánh Đức Chúa Giêsu', 'prayers/Kinh Cầu Tên rất thánh Đức Chúa Giêsu.html');
-  napKinhVao('Kinh Cầu Đức Bà', 'prayers/Kinh Cầu Đức Bà.html');
-  napKinhVao('Kinh Cầu Đức Bà 1', 'prayers/Kinh Cầu Đức Bà.html');
-  napKinhVao('Kinh Cầu Đức Bà 2', 'prayers/Kinh Cầu Đức Bà 2.html');
-  napKinhVao('Kinh Cầu chịu nạn', 'prayers/Kinh Cầu chịu nạn.html');
-  napKinhVao('Kinh Cầu ông thánh Giuse', 'prayers/Kinh Cầu ông thánh Giuse.html');
-  napKinhVao('Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu', 'prayers/Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu.html');
-  napKinhVao('Kinh Cầu các thánh', 'prayers/Kinh Cầu các thánh.html');
-  napKinhVao('Kinh Hãy nhớ', 'prayers/Kinh Hãy nhớ.html');
-  napKinhVao('Sáng khi thức dậy', 'prayers/Sáng khi thức dậy.html');
-napKinhVao('Tối trước khi ngủ', 'prayers/Tối trước khi ngủ.html');
-napKinhVao('Trước khi ăn', 'prayers/Trước khi ăn.html');
-napKinhVao('Sau khi ăn', 'prayers/Sau khi ăn.html');
-napKinhVao('Khi toan làm việc gì', 'prayers/Khi toan làm việc gì.html');
-napKinhVao('Đang khi làm việc gì', 'prayers/Đang khi làm việc gì.html');
-napKinhVao('Khi gặp sự khốn khó', 'prayers/Khi gặp sự khốn khó.html');
-napKinhVao('Khi phải chước cám dỗ', 'prayers/Khi phải chước cám dỗ.html');
-napKinhVao('Khi xem lễ', 'prayers/Khi xem lễ.html');
-napKinhVao('Kinh Kính lạy Đức thánh Thiên thần', 'prayers/Kinh Kính lạy Đức thánh Thiên thần.html');
-
-napKinhVao('Lời sau khi nguyện ngắm Hà Nội xưa', 'old-hanoi-prayers/Lời sau khi nguyện ngắm.html');
-napKinhVao('Dấu Thánh giá Hà Nội xưa', 'old-hanoi-prayers/Dấu Thánh giá.html');
-napKinhVao('Kinh Truyền tin Hà Nội xưa', 'old-hanoi-prayers/Kinh Truyền tin.html');
-napKinhVao('Kinh Đức Chúa Thánh Thần Hà Nội xưa', 'old-hanoi-prayers/Kinh Đức Chúa Thánh Thần.html');
-napKinhVao('Kinh Lạy Cha Hà Nội xưa', 'old-hanoi-prayers/Kinh Lạy Cha.html');
-napKinhVao('Kinh Kính mừng Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính mừng.html');
-napKinhVao('Kinh Nhân đức tin Hà Nội xưa', 'old-hanoi-prayers/Kinh Nhân đức tin.html');
-napKinhVao('Kinh Trông cậy Hà Nội xưa', 'old-hanoi-prayers/Kinh Trông cậy.html');
-napKinhVao('Kinh Kính mến Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính mến.html');
-napKinhVao('Kinh Ăn năn cáo mình Hà Nội xưa', 'old-hanoi-prayers/Kinh Ăn năn cáo mình.html');
-napKinhVao('Kinh Vâng lời Hà Nội xưa', 'old-hanoi-prayers/Kinh Vâng lời.html');
-napKinhVao('Kinh Kính dâng Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính dâng.html');
-napKinhVao('Kinh Cầu nhân đức sạch sẽ Hà Nội xưa', 'old-hanoi-prayers/Kinh Cầu nhân đức sạch sẽ.html');
-napKinhVao('Kinh Cầu Đức Bà và các Thánh Hà Nội xưa', 'old-hanoi-prayers/Kinh Cầu Đức Bà và các Thánh.html');
-napKinhVao('Kinh Cám ơn Hà Nội xưa', 'old-hanoi-prayers/Kinh Cám ơn.html');
-napKinhVao('Lời nguyện khi đọc kinh đoạn Hà Nội xưa', 'old-hanoi-prayers/Lời nguyện khi đọc kinh đoạn.html');
-napKinhVao('Kinh Cầu ông thánh Phêrô', 'private-prayers/Kinh Cầu ông thánh Phêrô.html');
-napKinhVao('Kinh tuần cửu nhật ông thánh Phêrô', 'private-prayers/Kinh tuần cửu nhật ông thánh Phêrô.html');
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Hàm layoutChant đã được sửa đổi để nhận chiều rộng làm tham số
+document.addEventListener('DOMContentLoaded', function () {
     var layoutChant = function(ctxt, score, chantContainer, containerWidth) {
         score.performLayoutAsync(ctxt, function() {
             score.layoutChantLines(ctxt, containerWidth, function() { // Sử dụng containerWidth ở đây
@@ -243,10 +131,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-    // ----------------------------------------------------------------------
-    // PHẦN LOGIC CHÍNH - ĐÃ ĐƯỢC CẢI TIẾN
-    // Thay vì hiển thị thánh ca ngay lập tức, chúng ta sẽ gọi adjustChantContainerWidth
+    // ---------------------------------------------------------------------------
+    // PHẦN HIỂN THỊ THÁNH CA VÀ CÁC PHẦN TỬ KHÁC
     // để đảm bảo chiều rộng được tính toán và áp dụng trước khi layout
     // ----------------------------------------------------------------------
 
@@ -255,11 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gọi hàm điều chỉnh chiều rộng khi cửa sổ được resize
     window.addEventListener('resize', adjustChantContainerWidth);
-});
-// Đoạn mã cho phép chạy nhạc
-document.addEventListener('DOMContentLoaded', function() {
-    const clickableElements = document.querySelectorAll('.gabc-segment, p[data-audio]');
-    const audioCache = {}; // Đối tượng để lưu trữ các đối tượng Audio đã tạo
+
     let currentAudio = null; // Biến để theo dõi audio đang phát
 
     clickableElements.forEach(element => {
@@ -326,4 +208,116 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Hàm nạp kinh vào các phần tử
+async function napKinhVao(containerId, filePath) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+      console.warn(`Không tìm thấy vùng chứa với ID: ${containerId}`);
+      return; // Thoát sớm nếu không tìm thấy container
+    }
+
+    try {
+      const response = await fetch(filePath);
+      if (!response.ok) {
+        throw new Error(`Lỗi khi tải file ${filePath}: ${response.statusText} (${response.status})`);
+      }
+      const htmlContent = await response.text();
+      container.innerHTML = htmlContent;
+    } catch (error) {
+      console.error(`Không thể nạp kinh từ \"${filePath}\" vào \"#${containerId}\":`, error);
+      // Hiển thị thông báo lỗi thân thiện hơn trong container
+      container.innerHTML = `<p style=\"color: red; font-style: italic;\">Xin lỗi, không thể tải được nội dung kinh này vào lúc này.</p>`;
+    }
+  }
+
+// Nạp nội dung các kinh vào các phần tử tương ứng (giữ nguyên các lệnh gọi hàm napKinhVao của bạn)
+napKinhVao('Các câu lạy', 'prayers/Các câu lạy.html');
+napKinhVao('Câu than Fatima', 'prayers/Câu than Fatima.html');
+napKinhVao('Kinh Ăn năn tội', 'prayers/Kinh Ăn năn tội.html');
+napKinhVao('Kinh Cám ơn ban ngày', 'prayers/Kinh Cám ơn ban ngày.html');
+napKinhVao('Kinh Cám ơn ban tối', 'prayers/Kinh Cám ơn ban tối.html');
+napKinhVao('Kinh Cáo mình', 'prayers/Kinh Cáo mình.html');
+napKinhVao('Kinh Cậy vì', 'prayers/Kinh Cậy vì.html');
+napKinhVao('Kinh Cậy', 'prayers/Kinh Cậy.html');
+napKinhVao('Kinh Dấu đơn', 'prayers/Kinh Dấu đơn.html');
+napKinhVao('Kinh Dấu kép', 'prayers/Kinh Dấu kép.html');
+napKinhVao('Kinh Vì dấu', 'prayers/Kinh Vì dấu.html');
+napKinhVao('Kinh Kính mến', 'prayers/Kinh Kính mến.html');
+napKinhVao('Kinh Kính mừng', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 1', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 2', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 3', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 4', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 5', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 6', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 7', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 8', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Kính mừng 9', 'prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Lạy Cha', 'prayers/Kinh Lạy Cha.html');
+napKinhVao('Kinh Lạy Nữ Vương', 'prayers/Kinh Lạy Nữ Vương.html');
+napKinhVao('Kinh Phó dâng', 'prayers/Kinh Phó dâng.html');
+napKinhVao('Kinh Phù hộ', 'prayers/Kinh Phù hộ.html');
+napKinhVao('Kinh Sáng danh', 'prayers/Kinh Sáng danh.html');
+napKinhVao('Kinh Tin kính', 'prayers/Kinh Tin kính.html');
+napKinhVao('Kinh Tin', 'prayers/Kinh Tin.html');
+napKinhVao('Kinh Trông cậy', 'prayers/Kinh Trông cậy.html');
+napKinhVao('Kinh Vì dấu', 'prayers/Kinh Vì dấu.html');
+napKinhVao('Kinh Truyền tin', 'prayers/Kinh Truyền tin.html');
+napKinhVao('Kinh Lạy Nữ Vương Thiên Đàng', 'prayers/Kinh Lạy Nữ Vương Thiên Đàng.html');
+napKinhVao('Kinh Đức Chúa Thánh Thần', 'prayers/Kinh Đức Chúa Thánh Thần.html');
+napKinhVao('Kinh Sấp mình', 'prayers/Kinh Sấp mình.html');
+napKinhVao('Kinh Thờ lạy', 'prayers/Kinh Thờ lạy.html');
+napKinhVao('Kinh Đội ơn', 'prayers/Kinh Đội ơn.html');
+napKinhVao('Kinh Sáng soi', 'prayers/Kinh Sáng soi.html');
+napKinhVao('Kinh Đức thánh Thiên thần', 'prayers/Kinh Đức thánh Thiên thần.html');
+napKinhVao('Kinh Lạy Thánh Mẫu', 'prayers/Kinh Lạy Thánh Mẫu.html');
+napKinhVao('Kinh Ông thánh Phanxicô cầu cho kẻ ngoại', 'prayers/Kinh Ông thánh Phanxicô cầu cho kẻ ngoại.html');
+napKinhVao('Kinh Xét mình', 'prayers/Kinh Xét mình.html');
+napKinhVao('Kinh Hãy nhớ', 'prayers/Kinh Hãy nhớ.html');
+napKinhVao('Kinh Cầu ơn chết lành', 'prayers/Kinh Cầu ơn chết lành.html');
+napKinhVao('Kinh Nghĩa đức tin', 'prayers/Kinh Nghĩa đức tin.html');
+napKinhVao('Kinh Mười điều răn', 'prayers/Kinh Mười điều răn.html');
+napKinhVao('Kinh Sáu điều răn', 'prayers/Kinh Sáu điều răn.html');
+napKinhVao('Kinh Bảy phép Bí tích', 'prayers/Kinh Bảy phép Bí tích.html');
+napKinhVao('Kinh Mười bốn mối', 'prayers/Kinh Mười bốn mối.html');
+napKinhVao('Kinh Cải tội bảy mối', 'prayers/Kinh Cải tội bảy mối.html');
+napKinhVao('Kinh Tám mối phúc thật', 'prayers/Kinh Tám mối phúc thật.html');
+napKinhVao('Kinh Cầu Tên rất thánh Đức Chúa Giêsu', 'prayers/Kinh Cầu Tên rất thánh Đức Chúa Giêsu.html');
+napKinhVao('Kinh Cầu Đức Bà', 'prayers/Kinh Cầu Đức Bà.html');
+napKinhVao('Kinh Cầu Đức Bà 1', 'prayers/Kinh Cầu Đức Bà.html');
+napKinhVao('Kinh Cầu Đức Bà 2', 'prayers/Kinh Cầu Đức Bà 2.html');
+napKinhVao('Kinh Cầu chịu nạn', 'prayers/Kinh Cầu chịu nạn.html');
+napKinhVao('Kinh Cầu ông thánh Giuse', 'prayers/Kinh Cầu ông thánh Giuse.html');
+napKinhVao('Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu', 'prayers/Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu.html');
+napKinhVao('Kinh Cầu các thánh', 'prayers/Kinh Cầu các thánh.html');
+napKinhVao('Kinh Hãy nhớ', 'prayers/Kinh Hãy nhớ.html');
+napKinhVao('Sáng khi thức dậy', 'prayers/Sáng khi thức dậy.html');
+napKinhVao('Tối trước khi ngủ', 'prayers/Tối trước khi ngủ.html');
+napKinhVao('Trước khi ăn', 'prayers/Trước khi ăn.html');
+napKinhVao('Sau khi ăn', 'prayers/Sau khi ăn.html');
+napKinhVao('Khi toan làm việc gì', 'prayers/Khi toan làm việc gì.html');
+napKinhVao('Đang khi làm việc gì', 'prayers/Đang khi làm việc gì.html');
+napKinhVao('Khi gặp sự khốn khó', 'prayers/Khi gặp sự khốn khó.html');
+napKinhVao('Khi phải chước cám dỗ', 'prayers/Khi phải chước cám dỗ.html');
+napKinhVao('Khi xem lễ', 'prayers/Khi xem lễ.html');
+napKinhVao('Kinh Kính lạy Đức thánh Thiên thần', 'prayers/Kinh Kính lạy Đức thánh Thiên thần.html');
+napKinhVao('Lời sau khi nguyện ngắm Hà Nội xưa', 'old-hanoi-prayers/Lời sau khi nguyện ngắm.html');
+napKinhVao('Dấu Thánh giá Hà Nội xưa', 'old-hanoi-prayers/Dấu Thánh giá.html');
+napKinhVao('Kinh Truyền tin Hà Nội xưa', 'old-hanoi-prayers/Kinh Truyền tin.html');
+napKinhVao('Kinh Đức Chúa Thánh Thần Hà Nội xưa', 'old-hanoi-prayers/Kinh Đức Chúa Thánh Thần.html');
+napKinhVao('Kinh Lạy Cha Hà Nội xưa', 'old-hanoi-prayers/Kinh Lạy Cha.html');
+napKinhVao('Kinh Kính mừng Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Nhân đức tin Hà Nội xưa', 'old-hanoi-prayers/Kinh Nhân đức tin.html');
+napKinhVao('Kinh Trông cậy Hà Nội xưa', 'old-hanoi-prayers/Kinh Trông cậy.html');
+napKinhVao('Kinh Kính mến Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính mến.html');
+napKinhVao('Kinh Ăn năn cáo mình Hà Nội xưa', 'old-hanoi-prayers/Kinh Ăn năn cáo mình.html');
+napKinhVao('Kinh Vâng lời Hà Nội xưa', 'old-hanoi-prayers/Kinh Vâng lời.html');
+napKinhVao('Kinh Kính dâng Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính dâng.html');
+napKinhVao('Kinh Cầu nhân đức sạch sẽ Hà Nội xưa', 'old-hanoi-prayers/Kinh Cầu nhân đức sạch sẽ.html');
+napKinhVao('Kinh Cầu Đức Bà và các Thánh Hà Nội xưa', 'old-hanoi-prayers/Kinh Cầu Đức Bà và các Thánh.html');
+napKinhVao('Kinh Cám ơn Hà Nội xưa', 'old-hanoi-prayers/Kinh Cám ơn.html');
+napKinhVao('Lời nguyện khi đọc kinh đoạn Hà Nội xưa', 'old-hanoi-prayers/Lời nguyện khi đọc kinh đoạn.html');
+napKinhVao('Kinh Cầu ông thánh Phêrô', 'private-prayers/Kinh Cầu ông thánh Phêrô.html');
+napKinhVao('Kinh tuần cửu nhật ông thánh Phêrô', 'private-prayers/Kinh tuần cửu nhật ông thánh Phêrô.html');
 
