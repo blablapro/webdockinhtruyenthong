@@ -1,6 +1,6 @@
 body {
   font-family: "Crimson Pro","Noto Serif", serif;
-  background-color: #fdf6e3; /* Giữ lại màu kem */
+  /*background-color: #fdf6e3; /* Giữ lại màu kem */
   margin: 40px;
   color: #000;
 }
@@ -24,7 +24,8 @@ a:hover {
   position: -webkit-sticky; /* Cho trình duyệt Safari cũ */
   position: sticky;
   top: 0; /* Dính vào cạnh trên của khung nhìn */
-  background-color: #fdf6e3;
+  /*background-color: #fdf6e3;
+  
   padding-top: 5px;       /* Tùy chọn: thêm chút đệm cho đẹp */
   padding-bottom: 5px;
   z-index: 100; /* Đảm bảo nó nổi lên trên các phần tử khác */
