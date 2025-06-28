@@ -171,7 +171,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (chantContainer.classList.contains('multi-chant-container')) {
                 const gabcSegments = chantContainer.querySelectorAll('.gabc-segment');
                 gabcSegments.forEach(segment => segment.innerHTML = '');
-            }
+            } else if (chantContainer.classList.contains('unit-chant-container')) {
+                const gabcSegments = chantContainer.querySelectorAll('.gabc-segment');
+                gabcSegments.forEach(segment => segment.innerHTML = '');
+            } 
 
             if (chantContainer.classList.contains('chant-container')) {
                 // Hiển thị lại thánh ca đơn với chiều rộng mới
@@ -197,18 +200,33 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                 });
+            } else if (chantContainer.classList.contains('unit-chant-container')) {
+                // Hiển thị lại từng đoạn thánh ca trong multi-chant-container với chiều rộng mới
+                const chantSegments = chantContainer.querySelectorAll('.gabc-segment');
+                // Sử dụng chantContainer làm ngữ cảnh cho querySelectorAll
+ chantSegments.forEach(segment => {
+                    if (segment.classList.contains('gabc-segment')) {
+                        const gabcData = segment.dataset.gabc;
+                        const annotationData = segment.dataset.annotation;
+                        if (gabcData) {
+                            let ctxt = new exsurge.ChantContext();
+                            const useDropCap = segment.dataset.dropcap !== 'false';
+                            displayChant(ctxt, null, gabcData, segment, useDropCap, annotationData, containerWidth);
+                        }
+                    }
+                });
             }
         });
     }
 
     // Handle toggleable divs (prayers and chants)
     // Consolidated the two querySelectorAll calls into one
-    const toggleableDivs = document.querySelectorAll('div.toggleable-prayer, div.toggleable-prayer-open, .chant-container, .multi-chant-container');
+    const toggleableDivs = document.querySelectorAll('div.toggleable-prayer, div.toggleable-prayer-open, .chant-container, .multi-chant-container, .unit-chant-container');
 
     let chantCounter = 1;
 
     toggleableDivs.forEach(div => {
-        const isChantContainer = div.classList.contains('chant-container') || div.classList.contains('multi-chant-container');
+        const isChantContainer = div.classList.contains('chant-container') || div.classList.contains('multi-chant-container') || div.classList.contains('unit-chant-container');
         const titleData = div.dataset.title;
         const divId = div.id;
 

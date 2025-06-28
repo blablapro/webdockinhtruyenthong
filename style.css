@@ -1,8 +1,11 @@
 body {
   font-family: "Crimson Pro","Noto Serif", serif;
-  /*background-color: #fdf6e3; /* Giữ lại màu kem */
+  background-color: #fdf6e3; /* Giữ lại màu kem */
   margin: 40px;
   color: #000;
+}
+.khong-kem {
+  background-color: #FFFFFF;
 }
 a {
     font-style: italic;
@@ -51,13 +54,21 @@ a:hover {
   cursor: pointer; /* Add cursor pointer */
   margin-bottom: 5px; 
 }
+.unit-title {
+  font-size: 1.6em;
+  font-style: italic;
+  color: #A52A2A;
+  margin-top: 20px;   
+  cursor: pointer; /* Add cursor pointer */
+  margin-bottom: 5px; 
+}
 
 /* Đoạn nội dung kinh */
 p {
   font-size: 1.6em;
   line-height: 1.5;
   text-align: justify;
-  max-width: 700px;
+  /*max-width: 700px;*/
   margin-top: 0;
   margin-bottom: 0;
   margin: 0 auto; /* Giảm spacing và canh giữa */
@@ -76,6 +87,7 @@ p {
 .kem {
     color: #fdf6e3;
 }
+
 .do {
     color: #A52A2A;
 }
@@ -136,3 +148,46 @@ details summary::marker {
   margin-bottom: 0;
   margin: 0 auto;
 }
+.unit-chant-container {
+  width: 100%;
+  text-align: justify;
+  max-width: 1400px;
+  margin-bottom: 2rem; /* Thêm khoảng cách dưới mỗi bài thánh ca */
+  line-height: 1.5;
+  text-align: justify;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin: 0 auto;
+}
+.illustration {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  max-width: 525px;
+  height: auto;
+}
+
+.responsive-container {
+  /* Mặc định, container sẽ hiển thị các mục con theo chiều dọc */
+  display: flex;
+  flex-direction: column; /* Xếp chồng lên nhau (mặc định cho màn hình nhỏ) */
+  /*gap: 20px;  Tạo khoảng cách giữa ảnh và khối văn bản */
+}
+
+@media (min-width: 1125px) {
+  .responsive-container {
+      /* Chuyển sang layout hàng ngang */
+      flex-direction: row;
+      max-width: 1400px;
+      /* Căn chỉnh các mục con ở trên cùng */
+      align-items: center;
+      font-size: 1.3em;
+  }
+  .illustration {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 525px;
+    height: auto;
+  }}
