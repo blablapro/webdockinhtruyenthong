@@ -276,9 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // Đoạn mã cho phép chạy nhạc
 document.addEventListener('DOMContentLoaded', function() {
-    const clickableElements = document.querySelectorAll('.gabc-segment, p[data-audio]');
+    const clickableElements = document.querySelectorAll('.gabc-segment, p[data-audio]'); // Chỉ lắng nghe cho audio, midi được xử lý riêng
     const audioCache = {}; // Đối tượng để lưu trữ các đối tượng Audio đã tạo
+    const midiPlayer = new mm.SoundFontPlayer('https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus'); // Khởi tạo MIDI player
+    
     let currentAudio = null; // Biến để theo dõi audio đang phát
+
 
     clickableElements.forEach(element => {
         element.addEventListener('click', function(event) {
@@ -286,6 +289,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const audioPath = this.getAttribute('data-audio');
 
+            // Dừng MIDI nếu đang phát
+            if (midiPlayer.isPlaying()) {
+                midiPlayer.stop();
+            }
+
+            // Xử lý phát Audio
             if (audioPath) {
                 let audio;
                 if (audioCache[audioPath]) {
@@ -343,4 +352,96 @@ document.addEventListener('DOMContentLoaded', function() {
             currentAudio = null; // Đặt currentAudio về null sau khi dừng
         }
     });
+
+    // Callback được gọi khi MIDI phát xong
+
+    // Kiểm tra xem thư viện Magenta Music (mm) đã được tải chưa
+    if (typeof mm !== "undefined") {
+        // PHẦN XỬ LÝ MIDI
+        const midiTriggers = document.querySelectorAll('.midi[data-midi-file]');
+        const TEMPO = 120; // Tốc độ mặc định
+        const INSTRUMENT_ID = 19; // 19: Church Organ
+        const MIDI_FOLDER = 'midi/'; // Thư mục chứa file MIDI
+        const PLAY_ICON = '🎹';
+        const STOP_ICON = '⏹️';
+
+        let currentlyPlayingMidiTrigger = null;
+
+        // Khởi tạo MIDI player chỉ khi mm đã được định nghĩa
+        const midiPlayer = new mm.SoundFontPlayer('https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus');
+
+        midiTriggers.forEach(trigger => {
+            trigger.addEventListener('click', async function(event) {
+                event.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+
+                const clickedTrigger = event.currentTarget;
+                const midiFileName = clickedTrigger.dataset.midiFile;
+                const midiURL = MIDI_FOLDER + midiFileName;
+
+                // Dừng audio nếu đang phát
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    currentAudio = null;
+                }
+
+                // Kiểm tra nếu click lại vào trigger đang phát
+                if (midiPlayer.isPlaying() && currentlyPlayingMidiTrigger === clickedTrigger) {
+                    midiPlayer.stop();
+                    clickedTrigger.textContent = PLAY_ICON; // Đổi lại icon play
+                    currentlyPlayingMidiTrigger = null;
+                    console.log(`Đã dừng phát file MIDI: ${midiFileName}`);
+                    return;
+                }
+
+                // Dừng MIDI đang phát khác (nếu có)
+                if (midiPlayer.isPlaying()) {
+                    midiPlayer.stop();
+                    if (currentlyPlayingMidiTrigger) {
+                        currentlyPlayingMidiTrigger.textContent = PLAY_ICON; // Reset icon của trigger cũ
+                    }
+                }
+
+                try {
+                    console.log(`Đang tải và phát file MIDI: ${midiFileName}...`);
+                    await midiPlayer.start(midiURL, TEMPO, { program: INSTRUMENT_ID });
+
+                    clickedTrigger.textContent = STOP_ICON; // Đổi icon thành nút stop
+                    currentlyPlayingMidiTrigger = clickedTrigger;
+                    console.log(`Đang phát file MIDI: ${midiFileName}`);
+
+                } catch (error) {
+                    console.error(`Lỗi khi tải hoặc phát file MIDI: ${midiFileName}`, error);
+                    // Có thể thêm thông báo lỗi trên giao diện người dùng
+                    clickedTrigger.textContent = PLAY_ICON; // Đảm bảo icon trở lại play nếu lỗi
+                    currentlyPlayingMidiTrigger = null;
+                }
+            });
+        });
+
+        // Callback được gọi khi MIDI phát xong
+        midiPlayer.callbackObject = {
+            run: (note) => {
+                // Có thể thêm logic ở đây nếu cần phản ứng với từng nốt MIDI
+            },
+            stop: () => {
+                // Đảm bảo currentlyPlayingMidiTrigger vẫn đang tham chiếu đến trigger đã nhấn ban đầu
+                if (currentlyPlayingMidiTrigger) {
+                     const midiFileName = currentlyPlayingMidiTrigger.dataset.midiFile;
+                     console.log(`Đã phát xong file MIDI: ${midiFileName}`);
+                     currentlyPlayingMidiTrigger.textContent = PLAY_ICON; // Đổi lại icon play
+                     currentlyPlayingMidiTrigger = null;
+                }
+            }
+        };
+
+    } else {
+ console.warn("Thư viện Magenta Music (mm) chưa được tải hoặc định nghĩa. Chức năng phát MIDI sẽ không hoạt động.");
+ // Tùy chọn: Vô hiệu hóa các trigger MIDI hoặc hiển thị thông báo cho người dùng
+ document.querySelectorAll('.midi[data-midi-file]').forEach(trigger => {
+ trigger.style.pointerEvents = 'none'; // Vô hiệu hóa click
+ trigger.style.opacity = '0.5'; // Làm mờ icon
+ trigger.title = "Chức năng phát MIDI không khả dụng"; // Thêm tooltip
+ });
+    }
 });

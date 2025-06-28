@@ -4,6 +4,9 @@ body {
   margin: 40px;
   color: #000;
 }
+.emoji {
+  font-family: "Noto Color Emoji", "Crimson Pro","Noto Serif", serif;
+}
 .khong-kem {
   background-color: #FFFFFF;
 }
@@ -191,3 +194,13 @@ details summary::marker {
     width: 525px;
     height: auto;
   }}
+  .midi {
+    cursor: pointer; /* Biến con trỏ chuột thành hình bàn tay */
+    user-select: none; /* Ngăn người dùng bôi đen icon khi nhấn đúp */
+    transition: opacity 0.2s; /* Hiệu ứng mờ dần khi di chuột */
+    display: inline-block; /* Giúp hiệu ứng đẹp hơn */
+}
+
+.midi:hover {
+    opacity: 0.7; /* Hơi mờ đi khi di chuột vào */
+}
