@@ -2,7 +2,7 @@ async function napKinhVao(containerId, filePath) {
     const container = document.getElementById(containerId);
     if (!container) {
       console.warn(`Không tìm thấy vùng chứa với ID: ${containerId}`);
-      return null; // Return null if container not found
+      return; // Thoát sớm nếu không tìm thấy container
     }
 
     try {
@@ -12,15 +12,105 @@ async function napKinhVao(containerId, filePath) {
       }
       const htmlContent = await response.text();
       container.innerHTML = htmlContent;
-      return container; // Return the container after loading content
     } catch (error) {
       console.error(`Không thể nạp kinh từ \"${filePath}\" vào \"#${containerId}\":`, error);
+      // Hiển thị thông báo lỗi thân thiện hơn trong container
       container.innerHTML = `<p style=\"color: red; font-style: italic;\">Xin lỗi, không thể tải được nội dung kinh này vào lúc này.</p>`;
-      return null; // Return null on error
     }
   }
+  napKinhVao('Các câu lạy', 'prayers/Các câu lạy.html');
+  napKinhVao('Câu than Fatima', 'prayers/Câu than Fatima.html');
+  napKinhVao('Kinh Ăn năn tội', 'prayers/Kinh Ăn năn tội.html');
+  napKinhVao('Kinh Cám ơn ban ngày', 'prayers/Kinh Cám ơn ban ngày.html');
+  napKinhVao('Kinh Cám ơn ban tối', 'prayers/Kinh Cám ơn ban tối.html');
+  napKinhVao('Kinh Cáo mình', 'prayers/Kinh Cáo mình.html');
+  napKinhVao('Kinh Cậy vì', 'prayers/Kinh Cậy vì.html');
+  napKinhVao('Kinh Cậy', 'prayers/Kinh Cậy.html');
+  napKinhVao('Kinh Dấu đơn', 'prayers/Kinh Dấu đơn.html');
+  napKinhVao('Kinh Dấu kép', 'prayers/Kinh Dấu kép.html');
+  napKinhVao('Kinh Vì dấu', 'prayers/Kinh Vì dấu.html');
+  napKinhVao('Kinh Kính mến', 'prayers/Kinh Kính mến.html');
+  napKinhVao('Kinh Kính mừng', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 1', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 2', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 3', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 4', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 5', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 6', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 7', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 8', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Kính mừng 9', 'prayers/Kinh Kính mừng.html');
+  napKinhVao('Kinh Lạy Cha', 'prayers/Kinh Lạy Cha.html');
+  napKinhVao('Kinh Lạy Nữ Vương', 'prayers/Kinh Lạy Nữ Vương.html');
+  napKinhVao('Kinh Phó dâng', 'prayers/Kinh Phó dâng.html');
+  napKinhVao('Kinh Phù hộ', 'prayers/Kinh Phù hộ.html');
+  napKinhVao('Kinh Sáng danh', 'prayers/Kinh Sáng danh.html');
+  napKinhVao('Kinh Tin kính', 'prayers/Kinh Tin kính.html');
+  napKinhVao('Kinh Tin', 'prayers/Kinh Tin.html');
+  napKinhVao('Kinh Trông cậy', 'prayers/Kinh Trông cậy.html');
 
-document.addEventListener('DOMContentLoaded', async function() { // Made the function async
+  napKinhVao('Kinh Vì dấu', 'prayers/Kinh Vì dấu.html');
+  napKinhVao('Kinh Truyền tin', 'prayers/Kinh Truyền tin.html');
+  napKinhVao('Kinh Lạy Nữ Vương Thiên Đàng', 'prayers/Kinh Lạy Nữ Vương Thiên Đàng.html');
+  napKinhVao('Kinh Đức Chúa Thánh Thần', 'prayers/Kinh Đức Chúa Thánh Thần.html');
+  napKinhVao('Kinh Sấp mình', 'prayers/Kinh Sấp mình.html');
+  napKinhVao('Kinh Thờ lạy', 'prayers/Kinh Thờ lạy.html');
+  napKinhVao('Kinh Đội ơn', 'prayers/Kinh Đội ơn.html');
+  napKinhVao('Kinh Sáng soi', 'prayers/Kinh Sáng soi.html');
+  napKinhVao('Kinh Đức thánh Thiên thần', 'prayers/Kinh Đức thánh Thiên thần.html');
+  napKinhVao('Kinh Lạy Thánh Mẫu', 'prayers/Kinh Lạy Thánh Mẫu.html');
+  napKinhVao('Kinh Ông thánh Phanxicô cầu cho kẻ ngoại', 'prayers/Kinh Ông thánh Phanxicô cầu cho kẻ ngoại.html');
+  napKinhVao('Kinh Xét mình', 'prayers/Kinh Xét mình.html');
+  napKinhVao('Kinh Hãy nhớ', 'prayers/Kinh Hãy nhớ.html');
+  napKinhVao('Kinh Cầu ơn chết lành', 'prayers/Kinh Cầu ơn chết lành.html');
+  napKinhVao('Kinh Nghĩa đức tin', 'prayers/Kinh Nghĩa đức tin.html');
+  napKinhVao('Kinh Mười điều răn', 'prayers/Kinh Mười điều răn.html');
+  napKinhVao('Kinh Sáu điều răn', 'prayers/Kinh Sáu điều răn.html');
+  napKinhVao('Kinh Bảy phép Bí tích', 'prayers/Kinh Bảy phép Bí tích.html');
+  napKinhVao('Kinh Mười bốn mối', 'prayers/Kinh Mười bốn mối.html');
+  napKinhVao('Kinh Cải tội bảy mối', 'prayers/Kinh Cải tội bảy mối.html');
+  napKinhVao('Kinh Tám mối phúc thật', 'prayers/Kinh Tám mối phúc thật.html');
+  napKinhVao('Kinh Cầu Tên rất thánh Đức Chúa Giêsu', 'prayers/Kinh Cầu Tên rất thánh Đức Chúa Giêsu.html');
+  napKinhVao('Kinh Cầu Đức Bà', 'prayers/Kinh Cầu Đức Bà.html');
+  napKinhVao('Kinh Cầu Đức Bà 1', 'prayers/Kinh Cầu Đức Bà.html');
+  napKinhVao('Kinh Cầu Đức Bà 2', 'prayers/Kinh Cầu Đức Bà 2.html');
+  napKinhVao('Kinh Cầu chịu nạn', 'prayers/Kinh Cầu chịu nạn.html');
+  napKinhVao('Kinh Cầu ông thánh Giuse', 'prayers/Kinh Cầu ông thánh Giuse.html');
+  napKinhVao('Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu', 'prayers/Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu.html');
+  napKinhVao('Kinh Cầu các thánh', 'prayers/Kinh Cầu các thánh.html');
+  napKinhVao('Kinh Hãy nhớ', 'prayers/Kinh Hãy nhớ.html');
+  napKinhVao('Sáng khi thức dậy', 'prayers/Sáng khi thức dậy.html');
+napKinhVao('Tối trước khi ngủ', 'prayers/Tối trước khi ngủ.html');
+napKinhVao('Trước khi ăn', 'prayers/Trước khi ăn.html');
+napKinhVao('Sau khi ăn', 'prayers/Sau khi ăn.html');
+napKinhVao('Khi toan làm việc gì', 'prayers/Khi toan làm việc gì.html');
+napKinhVao('Đang khi làm việc gì', 'prayers/Đang khi làm việc gì.html');
+napKinhVao('Khi gặp sự khốn khó', 'prayers/Khi gặp sự khốn khó.html');
+napKinhVao('Khi phải chước cám dỗ', 'prayers/Khi phải chước cám dỗ.html');
+napKinhVao('Khi xem lễ', 'prayers/Khi xem lễ.html');
+napKinhVao('Kinh Kính lạy Đức thánh Thiên thần', 'prayers/Kinh Kính lạy Đức thánh Thiên thần.html');
+
+napKinhVao('Lời sau khi nguyện ngắm Hà Nội xưa', 'old-hanoi-prayers/Lời sau khi nguyện ngắm.html');
+napKinhVao('Dấu Thánh giá Hà Nội xưa', 'old-hanoi-prayers/Dấu Thánh giá.html');
+napKinhVao('Kinh Truyền tin Hà Nội xưa', 'old-hanoi-prayers/Kinh Truyền tin.html');
+napKinhVao('Kinh Đức Chúa Thánh Thần Hà Nội xưa', 'old-hanoi-prayers/Kinh Đức Chúa Thánh Thần.html');
+napKinhVao('Kinh Lạy Cha Hà Nội xưa', 'old-hanoi-prayers/Kinh Lạy Cha.html');
+napKinhVao('Kinh Kính mừng Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính mừng.html');
+napKinhVao('Kinh Nhân đức tin Hà Nội xưa', 'old-hanoi-prayers/Kinh Nhân đức tin.html');
+napKinhVao('Kinh Trông cậy Hà Nội xưa', 'old-hanoi-prayers/Kinh Trông cậy.html');
+napKinhVao('Kinh Kính mến Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính mến.html');
+napKinhVao('Kinh Ăn năn cáo mình Hà Nội xưa', 'old-hanoi-prayers/Kinh Ăn năn cáo mình.html');
+napKinhVao('Kinh Vâng lời Hà Nội xưa', 'old-hanoi-prayers/Kinh Vâng lời.html');
+napKinhVao('Kinh Kính dâng Hà Nội xưa', 'old-hanoi-prayers/Kinh Kính dâng.html');
+napKinhVao('Kinh Cầu nhân đức sạch sẽ Hà Nội xưa', 'old-hanoi-prayers/Kinh Cầu nhân đức sạch sẽ.html');
+napKinhVao('Kinh Cầu Đức Bà và các Thánh Hà Nội xưa', 'old-hanoi-prayers/Kinh Cầu Đức Bà và các Thánh.html');
+napKinhVao('Kinh Cám ơn Hà Nội xưa', 'old-hanoi-prayers/Kinh Cám ơn.html');
+napKinhVao('Lời nguyện khi đọc kinh đoạn Hà Nội xưa', 'old-hanoi-prayers/Lời nguyện khi đọc kinh đoạn.html');
+napKinhVao('Kinh Cầu ông thánh Phêrô', 'private-prayers/Kinh Cầu ông thánh Phêrô.html');
+napKinhVao('Kinh tuần cửu nhật ông thánh Phêrô', 'private-prayers/Kinh tuần cửu nhật ông thánh Phêrô.html');
+
+
+document.addEventListener('DOMContentLoaded', function() {
     // Hàm layoutChant đã được sửa đổi để nhận chiều rộng làm tham số
     var layoutChant = function(ctxt, score, chantContainer, containerWidth) {
         score.performLayoutAsync(ctxt, function() {
@@ -38,14 +128,14 @@ document.addEventListener('DOMContentLoaded', async function() { // Made the fun
         ctxt.neumeLineWeight = ctxt.staffLineWeight;
         ctxt.dividerLineWeight = ctxt.neumeLineWeight;
         ctxt.episemaLineWeight = ctxt.neumeLineWeight;
-        ctxt.lyricTextFont = "\'Crimson Pro\',\'Adobe Garamond Pro\',\'Garamond\',\'Georgia\', serif";
+        ctxt.lyricTextFont = "'Crimson Pro','Adobe Garamond Pro','Garamond','Georgia', serif";
         ctxt.staffInterval = 8;
         ctxt.lyricTextSize = 25;
         ctxt.dropCapTextSize = 87;
         ctxt.annotationTextSize = 20;
         ctxt.staffLineColor = "#A52A2A";
         ctxt.dropCapTextColor = "#A52A2A";
-        ctxt.dropCapTextFont = "\'Crimson Pro\',\'Adobe Garamond Pro\',\'Garamond\',\'Georgia\', serif";
+        ctxt.dropCapTextFont = "'Crimson Pro','Adobe Garamond Pro','Garamond','Georgia', serif";
         ctxt.annotationTextFont = ctxt.lyricTextFont;
         var mappings = exsurge.Gabc.createMappingsFromSource(ctxt, gabc);
         score = new exsurge.ChantScore(ctxt, mappings, useDropCap);
@@ -57,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async function() { // Made the fun
 
     // Hàm mới để điều chỉnh chiều rộng và hiển thị thánh ca
     function adjustChantContainerWidth() {
-        const allChantContainers = document.querySelectorAll('.chant-container, .multi-chant-containe');
+        const allChantContainers = document.querySelectorAll('.chant-container, .multi-chant-container');
         const screenWidth = window.innerWidth;
 
         let containerWidth;
@@ -77,14 +167,14 @@ document.addEventListener('DOMContentLoaded', async function() { // Made the fun
 
             // Clear previous chant rendering
             if (chantContainer.classList.contains('chant-container')) {
-                chantContainer.innerHTML = '';
+ chantContainer.innerHTML = '';
             } else if (chantContainer.classList.contains('multi-chant-container')) {
                 const gabcSegments = chantContainer.querySelectorAll('.gabc-segment');
                 gabcSegments.forEach(segment => segment.innerHTML = '');
             } else if (chantContainer.classList.contains('unit-chant-container')) {
                 const gabcSegments = chantContainer.querySelectorAll('.gabc-segment');
                 gabcSegments.forEach(segment => segment.innerHTML = '');
-            }
+            } 
 
             if (chantContainer.classList.contains('chant-container')) {
                 // Hiển thị lại thánh ca đơn với chiều rộng mới
@@ -99,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async function() { // Made the fun
                 // Hiển thị lại từng đoạn thánh ca trong multi-chant-container với chiều rộng mới
                 const chantSegments = chantContainer.querySelectorAll('.gabc-segment');
                 // Sử dụng chantContainer làm ngữ cảnh cho querySelectorAll
-                chantSegments.forEach(segment => {
+ chantSegments.forEach(segment => {
                     if (segment.classList.contains('gabc-segment')) {
                         const gabcData = segment.dataset.gabc;
                         const annotationData = segment.dataset.annotation;
@@ -114,7 +204,7 @@ document.addEventListener('DOMContentLoaded', async function() { // Made the fun
                 // Hiển thị lại từng đoạn thánh ca trong multi-chant-container với chiều rộng mới
                 const chantSegments = chantContainer.querySelectorAll('.gabc-segment');
                 // Sử dụng chantContainer làm ngữ cảnh cho querySelectorAll
-                chantSegments.forEach(segment => {
+ chantSegments.forEach(segment => {
                     if (segment.classList.contains('gabc-segment')) {
                         const gabcData = segment.dataset.gabc;
                         const annotationData = segment.dataset.annotation;
@@ -178,186 +268,79 @@ document.addEventListener('DOMContentLoaded', async function() { // Made the fun
     // để đảm bảo chiều rộng được tính toán và áp dụng trước khi layout
     // ----------------------------------------------------------------------
 
-    // Load prayers first and then attach event listeners
-    const prayerContainersToLoad = [
-        { id: 'Các câu lạy', path: 'prayers/Các câu lạy.html' },
-        { id: 'Câu than Fatima', path: 'prayers/Câu than Fatima.html' },
-        { id: 'Kinh Ăn năn tội', path: 'prayers/Kinh Ăn năn tội.html' },
-        { id: 'Kinh Cám ơn ban ngày', path: 'prayers/Kinh Cám ơn ban ngày.html' },
-        { id: 'Kinh Cám ơn ban tối', path: 'prayers/Kinh Cám ơn ban tối.html' },
-        { id: 'Kinh Cáo mình', path: 'prayers/Kinh Cáo mình.html' },
-        { id: 'Kinh Cậy vì', path: 'prayers/Kinh Cậy vì.html' },
-        { id: 'Kinh Cậy', path: 'prayers/Kinh Cậy.html' },
-        { id: 'Kinh Dấu đơn', path: 'prayers/Kinh Dấu đơn.html' },
-        { id: 'Kinh Dấu kép', path: 'prayers/Kinh Dấu kép.html' },
-        { id: 'Kinh Vì dấu', path: 'prayers/Kinh Vì dấu.html' },
-        { id: 'Kinh Kính mến', path: 'prayers/Kinh Kính mến.html' },
-        { id: 'Kinh Kính mừng', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 1', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 2', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 3', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 4', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 5', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 6', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 7', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 8', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Kính mừng 9', path: 'prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Lạy Cha', path: 'prayers/Kinh Lạy Cha.html' },
-        { id: 'Kinh Lạy Nữ Vương', path: 'prayers/Kinh Lạy Nữ Vương.html' },
-        { id: 'Kinh Phó dâng', path: 'prayers/Kinh Phó dâng.html' },
-        { id: 'Kinh Phù hộ', path: 'prayers/Kinh Phù hộ.html' },
-        { id: 'Kinh Sáng danh', path: 'prayers/Kinh Sáng danh.html' },
-        { id: 'Kinh Tin kính', path: 'prayers/Kinh Tin kính.html' },
-        { id: 'Kinh Tin', path: 'prayers/Kinh Tin.html' },
-        { id: 'Kinh Trông cậy', path: 'prayers/Kinh Trông cậy.html' },
-        { id: 'Kinh Vì dấu', path: 'prayers/Kinh Vì dấu.html' },
-        { id: 'Kinh Truyền tin', path: 'prayers/Kinh Truyền tin.html' },
-        { id: 'Kinh Lạy Nữ Vương Thiên Đàng', path: 'prayers/Kinh Lạy Nữ Vương Thiên Đàng.html' },
-        { id: 'Kinh Đức Chúa Thánh Thần', path: 'prayers/Kinh Đức Chúa Thánh Thần.html' },
-        { id: 'Kinh Sấp mình', path: 'prayers/Kinh Sấp mình.html' },
-        { id: 'Kinh Thờ lạy', path: 'prayers/Kinh Thờ lạy.html' },
-        { id: 'Kinh Đội ơn', path: 'prayers/Kinh Đội ơn.html' },
-        { id: 'Kinh Sáng soi', path: 'prayers/Kinh Sáng soi.html' },
-        { id: 'Kinh Đức thánh Thiên thần', path: 'prayers/Kinh Đức thánh Thiên thần.html' },
-        { id: 'Kinh Lạy Thánh Mẫu', path: 'prayers/Kinh Lạy Thánh Mẫu.html' },
-        { id: 'Kinh Ông thánh Phanxicô cầu cho kẻ ngoại', path: 'prayers/Kinh Ông thánh Phanxicô cầu cho kẻ ngoại.html' },
-        { id: 'Kinh Xét mình', path: 'prayers/Kinh Xét mình.html' },
-        { id: 'Kinh Hãy nhớ', path: 'prayers/Kinh Hãy nhớ.html' },
-        { id: 'Kinh Cầu ơn chết lành', path: 'prayers/Kinh Cầu ơn chết lành.html' },
-        { id: 'Kinh Nghĩa đức tin', path: 'prayers/Kinh Nghĩa đức tin.html' },
-        { id: 'Kinh Mười điều răn', path: 'prayers/Kinh Mười điều răn.html' },
-        { id: 'Kinh Sáu điều răn', path: 'prayers/Kinh Sáu điều răn.html' },
-        { id: 'Kinh Bảy phép Bí tích', path: 'prayers/Kinh Bảy phép Bí tích.html' },
-        { id: 'Kinh Mười bốn mối', path: 'prayers/Kinh Mười bốn mối.html' },
-        { id: 'Kinh Cải tội bảy mối', path: 'prayers/Kinh Cải tội bảy mối.html' },
-        { id: 'Kinh Tám mối phúc thật', path: 'prayers/Kinh Tám mối phúc thật.html' },
-        { id: 'Kinh Cầu Tên rất thánh Đức Chúa Giêsu', path: 'prayers/Kinh Cầu Tên rất thánh Đức Chúa Giêsu.html' },
-        { id: 'Kinh Cầu Đức Bà', path: 'prayers/Kinh Cầu Đức Bà.html' },
-        { id: 'Kinh Cầu Đức Bà 1', path: 'prayers/Kinh Cầu Đức Bà.html' },
-        { id: 'Kinh Cầu Đức Bà 2', path: 'prayers/Kinh Cầu Đức Bà 2.html' },
-        { id: 'Kinh Cầu chịu nạn', path: 'prayers/Kinh Cầu chịu nạn.html' },
-        { id: 'Kinh Cầu ông thánh Giuse', path: 'prayers/Kinh Cầu ông thánh Giuse.html' },
-        { id: 'Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu', path: 'prayers/Kinh Cầu rất thánh Trái Tim Đức Chúa Giêsu.html' },
-        { id: 'Kinh Cầu các thánh', path: 'prayers/Kinh Cầu các thánh.html' },
-        { id: 'Kinh Hãy nhớ', path: 'prayers/Kinh Hãy nhớ.html' },
-        { id: 'Sáng khi thức dậy', path: 'prayers/Sáng khi thức dậy.html' },
-        { id: 'Tối trước khi ngủ', path: 'prayers/Tối trước khi ngủ.html' },
-        { id: 'Trước khi ăn', path: 'prayers/Trước khi ăn.html' },
-        { id: 'Sau khi ăn', path: 'prayers/Sau khi ăn.html' },
-        { id: 'Khi toan làm việc gì', path: 'prayers/Khi toan làm việc gì.html' },
-        { id: 'Đang khi làm việc gì', path: 'prayers/Đang khi làm việc gì.html' },
-        { id: 'Khi gặp sự khốn khó', path: 'prayers/Khi gặp sự khốn khó.html' },
-        { id: 'Khi phải chước cám dỗ', path: 'prayers/Khi phải chước cám dỗ.html' },
-        { id: 'Khi xem lễ', path: 'prayers/Khi xem lễ.html' },
-        { id: 'Kinh Kính lạy Đức thánh Thiên thần', path: 'prayers/Kinh Kính lạy Đức thánh Thiên thần.html' },
-        { id: 'Lời sau khi nguyện ngắm Hà Nội xưa', path: 'old-hanoi-prayers/Lời sau khi nguyện ngắm.html' },
-        { id: 'Dấu Thánh giá Hà Nội xưa', path: 'old-hanoi-prayers/Dấu Thánh giá.html' },
-        { id: 'Kinh Truyền tin Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Truyền tin.html' },
-        { id: 'Kinh Đức Chúa Thánh Thần Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Đức Chúa Thánh Thần.html' },
-        { id: 'Kinh Lạy Cha Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Lạy Cha.html' },
-        { id: 'Kinh Kính mừng Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Kính mừng.html' },
-        { id: 'Kinh Nhân đức tin Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Nhân đức tin.html' },
-        { id: 'Kinh Trông cậy Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Trông cậy.html' },
-        { id: 'Kinh Kính mến Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Kính mến.html' },
-        { id: 'Kinh Ăn năn cáo mình Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Ăn năn cáo mình.html' },
-        { id: 'Kinh Vâng lời Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Vâng lời.html' },
-        { id: 'Kinh Kính dâng Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Kính dâng.html' },
-        { id: 'Kinh Cầu nhân đức sạch sẽ Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Cầu nhân đức sạch sẽ.html' },
-        { id: 'Kinh Cầu Đức Bà và các Thánh Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Cầu Đức Bà và các Thánh.html' },
-        { id: 'Kinh Cám ơn Hà Nội xưa', path: 'old-hanoi-prayers/Kinh Cám ơn.html' },
-        { id: 'Lời nguyện khi đọc kinh đoạn Hà Nội xưa', path: 'old-hanoi-prayers/Lời nguyện khi đọc kinh đoạn.html' },
-        { id: 'Kinh Cầu ông thánh Phêrô', path: 'private-prayers/Kinh Cầu ông thánh Phêrô.html' },
-        { id: 'Kinh tuần cửu nhật ông thánh Phêrô', path: 'private-prayers/Kinh tuần cửu nhật ông thánh Phêrô.html' },
-    ];
-
-    for (const prayerInfo of prayerContainersToLoad) {
-        const loadedContainer = await napKinhVao(prayerInfo.id, prayerInfo.path);
-        if (loadedContainer) {
-            attachAudioListeners(loadedContainer); // Attach listeners to the loaded content
-        }
-    }
-
-    // Select all elements with data-audio attributes initially present in the DOM
-    const initialAudioElements = document.querySelectorAll('.gabc-segment, p[data-audio], span[data-audio]');
-    attachAudioListenersToElements(initialAudioElements);
-
-
-    // Function to attach audio listeners to a given container
-    function attachAudioListeners(container) {
-        const audioElements = container.querySelectorAll('.gabc-segment, p[data-audio],  span[data-audio]'); // Select the elements you want to be clickable for audio
-        attachAudioListenersToElements(audioElements);
-    }
-
-    // Function to attach audio listeners to a NodeList of elements
-    function attachAudioListenersToElements(elements) {
-        const audioCache = {};
-        let currentAudio = null; // Keep track of currently playing audio within this scope or a higher one if needed
-
-        elements.forEach(element => {
-            element.addEventListener('click', function(event) {
-                event.stopPropagation();
-
-                const audioPath = this.getAttribute('data-audio');
-
-                // Ensure we stop any currently playing audio globally
-                if (window.currentPlayingAudio) {
-                    window.currentPlayingAudio.pause();
-                    window.currentPlayingAudio.currentTime = 0;
-                    window.currentPlayingAudio = null;
-                }
-
-                if (audioPath) {
-                    let audio;
-                    if (audioCache[audioPath]) {
-                        audio = audioCache[audioPath];
-                    } else {
-                        audio = new Audio(audioPath);
-                        audioCache[audioPath] = audio;
-
-                        audio.addEventListener('ended', function() {
-                            this.currentTime = 0;
-                            if (window.currentPlayingAudio === this) {
-                                window.currentPlayingAudio = null;
-                            }
-                        });
-
-                         audio.addEventListener('play', function() {
-                            // Update the global currentPlayingAudio
-                            window.currentPlayingAudio = this;
-                         });
-
-                         audio.addEventListener('pause', function() {
-                            if (window.currentPlayingAudio === this) {
-                                window.currentPlayingAudio = null;
-                            }
-                         });
-                    }
-
-                    if (audio.paused) {
-                        audio.play();
-                    } else {
-                        audio.pause();
-                        audio.currentTime = 0;
-                        window.currentPlayingAudio = null; // Update global state
-                    }
-                }
-            });
-        });
-    }
-
-
-    // Call adjustChantContainerWidth after all content is loaded
+    // Gọi hàm điều chỉnh chiều rộng và hiển thị thánh ca khi DOMContentLoaded
     adjustChantContainerWidth();
 
-    // Call adjustChantContainerWidth on window resize
+    // Gọi hàm điều chỉnh chiều rộng khi cửa sổ được resize
     window.addEventListener('resize', adjustChantContainerWidth);
+});
+// Đoạn mã cho phép chạy nhạc
+document.addEventListener('DOMContentLoaded', function() {
+    const clickableElements = document.querySelectorAll('.gabc-segment, p[data-audio]');
+    const audioCache = {}; // Đối tượng để lưu trữ các đối tượng Audio đã tạo
+    let currentAudio = null; // Biến để theo dõi audio đang phát
 
-    // Global click listener to stop audio when clicking outside
+    clickableElements.forEach(element => {
+        element.addEventListener('click', function(event) {
+            event.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+
+            const audioPath = this.getAttribute('data-audio');
+
+            if (audioPath) {
+                let audio;
+                if (audioCache[audioPath]) {
+                    audio = audioCache[audioPath];
+                } else {
+                    audio = new Audio(audioPath);
+                    audioCache[audioPath] = audio;
+
+                    audio.addEventListener('ended', function() {
+                        this.currentTime = 0;
+                        // Khi audio kết thúc, đặt currentAudio về null nếu đây là audio đang phát
+                        if (currentAudio === this) {
+                            currentAudio = null;
+                        }
+                    });
+
+                    audio.addEventListener('play', function() {
+                        // Khi audio bắt đầu phát, cập nhật currentAudio
+                        currentAudio = this;
+                    });
+
+                     audio.addEventListener('pause', function() {
+                        // Khi audio dừng, đặt currentAudio về null nếu đây là audio đang phát
+                        if (currentAudio === this) {
+                            currentAudio = null;
+                        }
+                    });
+                }
+
+                if (currentAudio && currentAudio !== audio) {
+                    // Nếu có audio khác đang phát, dừng nó lại
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+
+                if (audio.paused) {
+                    audio.play(); // Nếu audio của segment này đang dừng, phát nó
+                } else {
+                     // Nếu audio của segment này đang phát (tức là currentAudio === audio),
+                     // click lần nữa sẽ dừng nó.
+                    audio.pause();
+                    audio.currentTime = 0;
+                     // Cập nhật currentAudio sau khi dừng
+                     currentAudio = null;
+                }
+            }
+        });
+    });
+
+    // Lắng nghe sự kiện click trên toàn bộ document để dừng audio khi click ra ngoài
     document.addEventListener('click', function() {
-        if (window.currentPlayingAudio) {
-            window.currentPlayingAudio.pause();
-            window.currentPlayingAudio.currentTime = 0;
-            window.currentPlayingAudio = null;
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null; // Đặt currentAudio về null sau khi dừng
         }
     });
 });
