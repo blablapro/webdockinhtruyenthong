@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async function() { // Made the fun
 
     // Hàm mới để điều chỉnh chiều rộng và hiển thị thánh ca
     function adjustChantContainerWidth() {
-        const allChantContainers = document.querySelectorAll('.chant-container, .multi-chant-container, .unit-chant-container');
+        const allChantContainers = document.querySelectorAll('.chant-container, .multi-chant-containe');
         const screenWidth = window.innerWidth;
 
         let containerWidth;
