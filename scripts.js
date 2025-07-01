@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // Đoạn mã cho phép chạy nhạc
 document.addEventListener('DOMContentLoaded', function() {
-    const clickableElements = document.querySelectorAll('.gabc-segment, p[data-audio]');
+    const clickableElements = document.querySelectorAll('.gabc-segment, p[data-audio], span[data-audio]');
     const audioCache = {}; // Đối tượng để lưu trữ các đối tượng Audio đã tạo
     let currentAudio = null; // Biến để theo dõi audio đang phát
 
