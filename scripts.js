@@ -344,3 +344,74 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// --- JAVASCRIPT CHO BÀI TẬP ĐIỀN VÀO CHỖ TRỐNG (ĐÃ CẬP NHẬT) ---
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    let lastFocusedBlank = null; 
+
+    const allBlanks = document.querySelectorAll('.blank');
+    const allCheckButtons = document.querySelectorAll('.check-btn');
+    const specialCharButtons = document.querySelectorAll('.special-char-btn');
+
+    allBlanks.forEach(blank => {
+        blank.addEventListener('focus', function() {
+            lastFocusedBlank = this;
+        });
+
+        // Khi người dùng gõ lại, xóa trạng thái đúng/sai và đáp án gợi ý
+        blank.addEventListener('input', function() {
+            this.classList.remove('correct', 'incorrect');
+            const nextElement = this.nextElementSibling;
+            if (nextElement && nextElement.classList.contains('correct-answer-display')) {
+                nextElement.remove();
+            }
+        });
+    });
+
+    allCheckButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const exerciseContainer = this.closest('.fill-in-exercise');
+            const blanksInExercise = exerciseContainer.querySelectorAll('.blank');
+            
+            const oldAnswerDisplays = exerciseContainer.querySelectorAll('.correct-answer-display');
+            oldAnswerDisplays.forEach(display => display.remove());
+
+            blanksInExercise.forEach(blank => {
+                const userAnswer = blank.innerText.trim();
+                const correctAnswers = blank.dataset.answers.split('@');
+
+                const isCorrect = correctAnswers.some(correctAnswer => 
+                    userAnswer.toLowerCase() === correctAnswer.trim().toLowerCase()
+                );
+                
+                blank.classList.remove('correct', 'incorrect');
+
+                if (isCorrect) {
+                    blank.classList.add('correct');
+                } else {
+                    blank.classList.add('incorrect');
+                    
+                    const answerDisplay = document.createElement('span');
+                    answerDisplay.classList.add('correct-answer-display');
+                    
+                    // THAY ĐỔI: Dùng .join() để hiển thị tất cả các đáp án
+                    answerDisplay.innerHTML = `${correctAnswers.join('<span class="do"> ou </span>')}`;
+                    
+                    blank.insertAdjacentElement('afterend', answerDisplay);
+                }
+            });
+        });
+    });
+
+    specialCharButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const char = this.innerText;
+            if (lastFocusedBlank) {
+                lastFocusedBlank.focus();
+                document.execCommand('insertText', false, char);
+            }
+        });
+    });
+});
