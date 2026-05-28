@@ -51,6 +51,7 @@ a:hover {
 .prayer-title {
   font-size: 1.6em;
   font-style: italic;
+  font-weight: bold;
   color: #A52A2A;
   text-align: center;
   margin-top: 20px;   
@@ -112,6 +113,7 @@ details summary {
     display: block; /* Đảm bảo summary chiếm toàn bộ chiều rộng */
   font-size: 1.6em;
   font-style: italic;
+  font-weight: bold;
   color: #A52A2A;
   text-align: center;
   cursor: pointer; /* Add cursor pointer */
